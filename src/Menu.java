@@ -12,7 +12,7 @@ public class Menu {
         frame.setLayout(new FlowLayout());
 
         //Generates the buttons.
-        JButton playbutton = new JButton("Play")
+        JButton playbutton = new JButton("Play");
         JButton HowToPlay = new JButton("How to play");
         frame.add(playbutton);
         frame.add(HowToPlay);
