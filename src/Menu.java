@@ -8,7 +8,15 @@ public class Menu {
         JFrame frame = new JFrame();
         frame.setSize(800,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Test Frame");
+        frame.setTitle("Welcome to the game!");
+        frame.setLayout(new FlowLayout());
+
+        //Generates the buttons.
+        JButton playbutton = new JButton("Play")
+        JButton HowToPlay = new JButton("How to play");
+        frame.add(playbutton);
+        frame.add(HowToPlay);
+
         frame.setVisible(true);
     }
 }
