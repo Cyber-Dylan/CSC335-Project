@@ -1,7 +1,9 @@
 //This is the main menu that will pop up when the game is run.
+//import the libraries
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 public class Instructions {
     public static void main(String[] args) {
         //Generates the window.
