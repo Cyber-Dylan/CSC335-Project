@@ -13,6 +13,11 @@ public class Menu {
         frame.setTitle("Welcome to the game!");
         frame.setLayout(new FlowLayout());
 
+        //Generates the text
+        JLabel label = new JLabel("This is a snake game made in java!");
+        frame.add(label);
+        frame.pack();
+
         //Generates the buttons.
         JButton playbutton = new JButton("Play");
         JButton HowToPlay = new JButton("How to play");

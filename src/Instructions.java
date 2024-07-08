@@ -13,6 +13,12 @@ public class Instructions {
         frame.setTitle("How to play");
         frame.setLayout(new FlowLayout());
 
+        //Generates the text
+        JLabel label = new JLabel("Guide the snake using the arrow keys, " +
+                "eat food to grow longer but try not to crash!");
+        frame.add(label);
+        frame.pack();
+
         //Generates the buttons.
         JButton backbutton = new JButton("Back");
         frame.add(backbutton);
