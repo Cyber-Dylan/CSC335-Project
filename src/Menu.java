@@ -1,7 +1,7 @@
 //This is the main menu that will pop up when the game is run.
 //import the libraries:
 import java.awt.*;
-import java.awt.event.*;
+//import java.awt.event.*;
 import javax.swing.*;
 
 public class Menu {
@@ -19,9 +19,9 @@ public class Menu {
         frame.pack();
 
         //Generates the buttons.
-        JButton playbutton = new JButton("Play");
+        JButton PlayButton = new JButton("Play");
         JButton HowToPlay = new JButton("How to play");
-        frame.add(playbutton);
+        frame.add(PlayButton);
         frame.add(HowToPlay);
 
         frame.setVisible(true);

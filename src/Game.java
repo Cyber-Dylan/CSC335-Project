@@ -1,4 +1,4 @@
-//The is the file where the game is.
+//This is the file where the game is.
 //import the libraries
 import javax.swing.*;
 import java.awt.*;
