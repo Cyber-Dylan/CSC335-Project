@@ -1,17 +1,17 @@
 //This is the main menu that will pop up when the game is run.
 //import the libraries:
 import java.awt.*;
-//import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Menu {
-    public static void main(String[] args) {
+public class Menu extends JFrame implements ActionListener {
+    public Menu() {
         //Generates the window.
         JFrame frame = new JFrame();
         frame.setSize(800,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Welcome to the game!");
-        frame.setLayout(new FlowLayout());
 
         //Generates the text
         JLabel label = new JLabel("This is a snake game made in java!");
@@ -20,10 +20,16 @@ public class Menu {
 
         //Generates the buttons.
         JButton PlayButton = new JButton("Play");
-        JButton HowToPlay = new JButton("How to play");
         frame.add(PlayButton);
+        PlayButton.addActionListener(this);
+
+        JButton HowToPlay = new JButton("How to play");
         frame.add(HowToPlay);
+        HowToPlay.addActionListener(this);
 
         frame.setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e){
+        new Instructions();
     }
 }
