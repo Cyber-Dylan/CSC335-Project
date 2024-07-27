@@ -1,9 +1,9 @@
 //This is the file where the game is.
 //import the libraries
 import javax.swing.*;
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Game {
     public Game() {

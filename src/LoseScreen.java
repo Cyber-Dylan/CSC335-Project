@@ -1,6 +1,6 @@
 //This is the screen that will pop up when you lose.
 //import the libraries:
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
