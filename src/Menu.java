@@ -11,13 +11,13 @@ public class Menu extends JFrame implements ActionListener {
         this.setTitle("Welcome to the game!");
         this.setLayout(null);
 
-        JLabel label = new JLabel("This is a snake game made in java!");
+        JLabel label = new JLabel("This is a snake game!");
         label.setBounds(300, 100, 200, 30); //Text position and size
         this.add(label);
 
         JButton PlayButton = new JButton("Play");
         PlayButton.setBounds(300, 200, 200, 50); //Button position and size
-        this.add(PlayButton);
+        this.add(PlayButton); 
         PlayButton.addActionListener(this);
 
         JButton HowToPlay = new JButton("How to play");
@@ -30,6 +30,11 @@ public class Menu extends JFrame implements ActionListener {
 
     //Calls the Instructions and Game class depending on which button is pressed.
     public void actionPerformed(ActionEvent e) {
-        new Instructions();
+        if (e.getActionCommand().equals("Play")) {
+            new Game();
+        }
+        else if (e.getActionCommand().equals("How to play")) {
+            new Instructions();
+        }
     }
-}
+} 

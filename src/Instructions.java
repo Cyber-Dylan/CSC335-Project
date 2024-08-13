@@ -12,7 +12,7 @@ public class Instructions extends JFrame implements ActionListener {
         this.setLayout(null);
 
         //Generates the text
-        JLabel label = new JLabel("Guide the snake using the arrow keys, " + "eat food to grow longer but try not to crash!");
+        JLabel label = new JLabel("Guide the snake using the arrow keys, " + "try not to crash!");
         label.setBounds(100, 100, 600, 30); //Text position and size
         this.add(label);
 
