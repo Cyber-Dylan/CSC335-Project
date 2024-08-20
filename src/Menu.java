@@ -8,22 +8,22 @@ public class Menu extends JFrame implements ActionListener {
     public Menu() {
         this.setSize(800, 800); // Frame size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Welcome to the game!");
+        this.setTitle("Welcome to the game!"); //Window title
         this.setLayout(null);
 
-        JLabel label = new JLabel("This is a snake game!");
+        JLabel label = new JLabel("This is a snake game!"); //Text
         label.setBounds(300, 100, 200, 30); //Text position and size
         this.add(label);
 
-        JButton PlayButton = new JButton("Play");
+        JButton PlayButton = new JButton("Play"); //Button text
         PlayButton.setBounds(300, 200, 200, 50); //Button position and size
         this.add(PlayButton); 
-        PlayButton.addActionListener(this);
+        PlayButton.addActionListener(this); //Button action
 
-        JButton HowToPlay = new JButton("How to play");
+        JButton HowToPlay = new JButton("How to play"); //Button text
         HowToPlay.setBounds(300, 300, 200, 50); //Button position and size
-        this.add(HowToPlay);
-        HowToPlay.addActionListener(this);
+        this.add(HowToPlay); //Add "how to play" button to the window
+        HowToPlay.addActionListener(this); //Buttons action
 
         this.setVisible(true);
     }

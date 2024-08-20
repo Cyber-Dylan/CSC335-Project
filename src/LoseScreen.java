@@ -8,14 +8,14 @@ public class LoseScreen extends JFrame implements ActionListener {
         //Generates the window.
         this.setSize(800, 800); // Frame size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("You Lose!");
+        this.setTitle("You Lose!"); //Window title
         this.setLayout(null);
 
         //Generates the buttons.
-        JButton PlayAgain = new JButton("Play Again");
+        JButton PlayAgain = new JButton("Play Again"); //Button text
         this.add(PlayAgain);
-        PlayAgain.setBounds(300, 200, 200, 50);
-        PlayAgain.addActionListener(this);
+        PlayAgain.setBounds(300, 200, 200, 50); //Button position and size
+        PlayAgain.addActionListener(this); //Button action
     }
 
     //Calls the game class when the button is pressed.

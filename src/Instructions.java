@@ -8,19 +8,19 @@ public class Instructions extends JFrame implements ActionListener {
         //Generates the window.
         this.setSize(800, 800); // Frame size
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("How to play");
+        this.setTitle("How to play"); //Window title
         this.setLayout(null);
 
         //Generates the text
-        JLabel label = new JLabel("Guide the snake using the arrow keys, " + "try not to crash!");
+        JLabel label = new JLabel("Guide the snake using the arrow keys, " + "try not to crash!"); //Text
         label.setBounds(100, 100, 600, 30); //Text position and size
         this.add(label);
 
         //Generates the buttons.
-        JButton BackButton = new JButton("Back");
+        JButton BackButton = new JButton("Back"); //Button text
         this.add(BackButton);
         BackButton.setBounds(300, 300, 200, 50); //Button position and size
-        BackButton.addActionListener(this);
+        BackButton.addActionListener(this); //Button action
 
         this.setVisible(true);
     }
