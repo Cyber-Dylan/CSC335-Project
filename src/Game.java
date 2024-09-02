@@ -7,28 +7,44 @@ import java.awt.image.ImageObserver;
 import java.text.AttributedCharacterIterator;
 
 public class Game extends JFrame {
-    final int WIDTH = 10; //Grid width
-    final int HEIGHT = 10; //Grid height
-    JButton[][] buttons = new JButton[WIDTH][HEIGHT]; //Creates a grid for the snake.
+    final int WIDTH = 20; //Grid width
+    final int HEIGHT = 20; //Grid height
+    final int PIXEL_WIDTH;
+    final int PIXEL_HEIGHT;
+    byte[][] grid = new byte[WIDTH][HEIGHT]; //Creates a grid for the snake.
     public Game() {
-
+        grid[4][6]=1; //Snake starting position.
+        grid[5][2]=2; //Apple starting position.
         // Generates the window.
         this.setSize(800, 800); // Frame size
+        PIXEL_WIDTH = this.getWidth()/WIDTH;
+        PIXEL_HEIGHT = this.getWidth()/HEIGHT;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false); //Window cannot be resized
         this.setTitle("Snake!"); //Window title
-        this.setVisible(true);
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                buttons[j][i] = new JButton(); //Create buttons for the grid.
-                buttons[j][i].setBounds(100 + j * 50, 100 + i * 50, 50, 50); //Button position and size
-                buttons[j][i].setBackground(Color.WHITE); //Button color
-                this.add(buttons[j][i]); //Add buttons to the grid.
+        this.setVisible(true); //Window background color
+    }
+
+    public void paint(Graphics g) {
+        //Generates the grid.
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
+                switch (grid[x][y]) {
+                    case 0:
+                        g.setColor(Color.BLACK); //Background colour
+                        break;
+                    case 1:
+                        g.setColor(Color.GREEN); //snake colour
+                        break;
+                    case 2:
+                        g.setColor(Color.RED); //Apple Colour
+                        break;
+                }
+                g.fillRect(x*PIXEL_WIDTH, y*PIXEL_HEIGHT, PIXEL_WIDTH, PIXEL_HEIGHT);
             }
         }
-        this.setLayout(new GridLayout(HEIGHT, WIDTH));
-        buttons[1][3].setBackground(Color.BLACK);
     }
+
     //Calls the LoseScreen class when the game is over.
     public void actionPerformed(ActionEvent e) {
         new LoseScreen();
