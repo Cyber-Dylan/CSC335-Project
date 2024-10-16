@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
+import java.io.*;
+import java.lang.Thread;
 
 public class Game extends JFrame implements ActionListener, KeyListener {
 
@@ -37,11 +39,26 @@ public class Game extends JFrame implements ActionListener, KeyListener {
         while (!gameOver) {
             //Move the snake and go to sleep.
             //gameOver = true;
-            grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
-            if (Objects.equals(startingDirection, "right") == true) {
+            grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1;//Snake starting position.
+            if (Objects.equals(startingDirection, "right")) {
                 SNAKE_MOVING_POSITIONX += 1;
             } //if statement
+            System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
+            if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0) {
+                gameOver = true;
+            }
+            try {
+                Thread.sleep(300);
+            }
+            catch (Exception e) {
+
+            }
+            repaint();
         } //while
+       /* if (gameOver = true) {
+            new LoseScreen()
+            break;
+        } */
 
         } //game class
 
