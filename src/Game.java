@@ -6,8 +6,11 @@ import java.awt.event.*;
 import java.util.Objects;
 import java.io.*;
 import java.lang.Thread;
+import javax.swing.Timer;
 
 public class Game extends JFrame implements ActionListener, KeyListener {
+
+Timer timer;
 
     final int WIDTH = 20; //Grid width
     final int HEIGHT = 20; //Grid height
@@ -36,30 +39,22 @@ public class Game extends JFrame implements ActionListener, KeyListener {
         this.setVisible(true); //Window background color
         this.setLayout(null);
 
-        while (!gameOver) {
-            //Move the snake and go to sleep.
-            //gameOver = true;
-            grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1;//Snake starting position.
-            if (Objects.equals(startingDirection, "right")) {
-                SNAKE_MOVING_POSITIONX += 1;
-            } //if statement
-            System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
-            if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0) {
-                gameOver = true;
-            }
-            try {
-                Thread.sleep(300);
-            }
-            catch (Exception e) {
 
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1;//Snake starting position.
+                if (Objects.equals(startingDirection, "right")) {
+                    SNAKE_MOVING_POSITIONX += 1;
+                } //if statement
+                System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
+                if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0) {
+                    gameOver = true;
+                }
+                repaint();
             }
-            repaint();
-        } //while
-       /* if (gameOver = true) {
-            new LoseScreen()
-            break;
-        } */
-
+        });
+            timer.start();
         } //game class
 
     public void paint(Graphics g) {
