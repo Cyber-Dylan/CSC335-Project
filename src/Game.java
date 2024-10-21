@@ -16,12 +16,17 @@ Timer timer;
     final int HEIGHT = 20; //Grid height
     final int PIXEL_WIDTH;
     final int PIXEL_HEIGHT;
-    int SNAKE_MOVING_POSITIONX = 3;
-    int SNAKE_MOVING_POSITIONY = 6;
+    int SNAKE_MOVING_POSITIONX = 9;
+    int SNAKE_MOVING_POSITIONY = 9;
     byte[][] grid = new byte[WIDTH][HEIGHT]; //Creates a grid for the snake.
     boolean gameOver = false;
 
-    String startingDirection = "right"; //Directions the snake can move.
+    //Directions the snake can move.
+    final String DIRECTION_LEFT = "left";
+    final String DIRECTION_RIGHT = "right";
+    final String DIRECTION_UP = "up";
+    final String DIRECTION_DOWN = "down";
+    String currentDirection = DIRECTION_RIGHT;
 
     public Game() {
         //start();
@@ -40,16 +45,26 @@ Timer timer;
         this.setLayout(null);
 
 
-        timer = new Timer(1000, new ActionListener() {
+
+        timer = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1;//Snake starting position.
-                if (Objects.equals(startingDirection, "right")) {
-                    SNAKE_MOVING_POSITIONX += 1;
-                } //if statement
+
+                //Movement logic.
+                switch (currentDirection) {
+                    case DIRECTION_RIGHT -> SNAKE_MOVING_POSITIONX += 1;
+                    case DIRECTION_LEFT -> SNAKE_MOVING_POSITIONX += -1;
+                    case DIRECTION_UP -> SNAKE_MOVING_POSITIONY += -1;
+                    case DIRECTION_DOWN -> SNAKE_MOVING_POSITIONY += 1;
+                }
+
                 System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
-                if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0) {
+                if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0 || SNAKE_MOVING_POSITIONY > 10) {
                     gameOver = true;
+                }
+                if (gameOver == true) {
+                    new LoseScreen();
                 }
                 repaint();
             }
@@ -88,11 +103,24 @@ Timer timer;
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-
+        char keyChar = keyEvent.getKeyChar();
+        switch (keyChar) {
+            case 'w':
+                currentDirection = DIRECTION_UP;
+                break;
+            case 'a':
+                currentDirection = DIRECTION_LEFT;
+                break;
+            case 's':
+                currentDirection = DIRECTION_DOWN;
+                break;
+            case 'd':
+                currentDirection = DIRECTION_RIGHT;
+                break;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-
     }
 }
