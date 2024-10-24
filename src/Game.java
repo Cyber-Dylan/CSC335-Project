@@ -6,9 +6,10 @@ import java.awt.event.*;
 import java.util.Objects;
 import java.io.*;
 import java.lang.Thread;
+import java.util.stream.LongStream;
 import javax.swing.Timer;
 
-public class Game extends JFrame implements ActionListener, KeyListener {
+public class Game extends JFrame implements KeyListener {
 
 Timer timer;
 
@@ -44,12 +45,12 @@ Timer timer;
         this.setVisible(true); //Window background color
         this.setLayout(null);
 
-
-
         timer = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1;//Snake starting position.
+                if (SNAKE_MOVING_POSITIONX < 20 && SNAKE_MOVING_POSITIONY > 0 && SNAKE_MOVING_POSITIONX > 0 && SNAKE_MOVING_POSITIONY < 20) {
+                    grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
+                }
 
                 //Movement logic.
                 switch (currentDirection) {
@@ -59,14 +60,20 @@ Timer timer;
                     case DIRECTION_DOWN -> SNAKE_MOVING_POSITIONY += 1;
                 }
 
-                System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
-                if (SNAKE_MOVING_POSITIONX > 19 || SNAKE_MOVING_POSITIONY < 0 || SNAKE_MOVING_POSITIONY > 10) {
+                if (grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] == 1) {
                     gameOver = true;
                 }
-                if (gameOver == true) {
+
+                System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
+                if (SNAKE_MOVING_POSITIONX > 20 || SNAKE_MOVING_POSITIONY < 0 || SNAKE_MOVING_POSITIONY > 20) {
+                    gameOver = true;
+                }
+                if (!gameOver) {
+                    repaint();
+                } else {
+                    timer.stop();
                     new LoseScreen();
                 }
-                repaint();
             }
         });
             timer.start();
@@ -89,16 +96,9 @@ Timer timer;
         }
     }
 
-
-    //Calls the LoseScreen class when the game is over.
-    public void actionPerformed(ActionEvent e) {
-        new LoseScreen();
-    }
-
     //Moves the snake.
     @Override
     public void keyTyped(KeyEvent keyEvent) {
-
     }
 
     @Override
