@@ -48,32 +48,53 @@ Timer timer;
         timer = new Timer(200, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (SNAKE_MOVING_POSITIONX < 20 && SNAKE_MOVING_POSITIONY > 0 && SNAKE_MOVING_POSITIONX > 0 && SNAKE_MOVING_POSITIONY < 20) {
-                    grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
-                }
 
-                //Movement logic.
+                int CheckX = SNAKE_MOVING_POSITIONX;
+                int CheckY = SNAKE_MOVING_POSITIONY;
+
+                //Switch (current direction)
                 switch (currentDirection) {
-                    case DIRECTION_RIGHT -> SNAKE_MOVING_POSITIONX += 1;
-                    case DIRECTION_LEFT -> SNAKE_MOVING_POSITIONX += -1;
-                    case DIRECTION_UP -> SNAKE_MOVING_POSITIONY += -1;
-                    case DIRECTION_DOWN -> SNAKE_MOVING_POSITIONY += 1;
+                    case DIRECTION_LEFT:
+                        CheckX -= 1;
+                        break;
+                    case DIRECTION_RIGHT:
+                        CheckX += 1;
+                        break;
+                    case DIRECTION_UP:
+                        CheckY -= 1;
+                        break;
+                    case DIRECTION_DOWN:
+                        CheckY += 1;
+                        break;
                 }
 
-                if (grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] == 1) {
-                    gameOver = true;
-                }
-
-                System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
-                if (SNAKE_MOVING_POSITIONX > 20 || SNAKE_MOVING_POSITIONY < 0 || SNAKE_MOVING_POSITIONY > 20) {
-                    gameOver = true;
-                }
                 if (!gameOver) {
                     repaint();
                 } else {
                     timer.stop();
                     new LoseScreen();
                 }
+
+
+                //Change this to use CheckX, CheckY
+                if (grid[CheckX][CheckY] == 1) {
+                    System.out.println("Snake is on top of self");
+                    gameOver = true;
+                }
+
+                //Swap this around
+                if (CheckX < 20 && CheckY > 0 && CheckX > 0 && CheckY < 20) {
+                    System.out.println("Snake is in board");
+                    SNAKE_MOVING_POSITIONX = CheckX;
+                    SNAKE_MOVING_POSITIONY = CheckY;
+                    grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
+                }
+                else {
+                    System.out.println("Snake is out of bounds");
+                    gameOver = true;
+                }
+
+                System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
             }
         });
             timer.start();
