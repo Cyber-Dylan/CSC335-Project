@@ -52,7 +52,7 @@ Timer timer;
                 int CheckX = SNAKE_MOVING_POSITIONX;
                 int CheckY = SNAKE_MOVING_POSITIONY;
 
-                //Switch (current direction)
+                //Checks pixel in front of the snakes head.
                 switch (currentDirection) {
                     case DIRECTION_LEFT:
                         CheckX -= 1;
@@ -75,7 +75,7 @@ Timer timer;
                     new LoseScreen();
                 }
 
-                //Swap this around
+                //Check grid boundary.
                 if (CheckX < 20 && CheckY > -1 && CheckX > -1 && CheckY < 20) {
                     if ((!gameOver) && grid[CheckX][CheckY] == 1) {
                         System.out.println("Snake is on top of self");
