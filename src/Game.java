@@ -45,7 +45,7 @@ Timer timer;
         this.setVisible(true); //Window background color
         this.setLayout(null);
 
-        timer = new Timer(200, new ActionListener() {
+        timer = new Timer(300, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
@@ -75,19 +75,17 @@ Timer timer;
                     new LoseScreen();
                 }
 
-
-                //Change this to use CheckX, CheckY
-                if (grid[CheckX][CheckY] == 1) {
-                    System.out.println("Snake is on top of self");
-                    gameOver = true;
-                }
-
                 //Swap this around
-                if (CheckX < 20 && CheckY > 0 && CheckX > 0 && CheckY < 20) {
-                    System.out.println("Snake is in board");
-                    SNAKE_MOVING_POSITIONX = CheckX;
-                    SNAKE_MOVING_POSITIONY = CheckY;
-                    grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
+                if (CheckX < 20 && CheckY > -1 && CheckX > -1 && CheckY < 20) {
+                    if ((!gameOver) && grid[CheckX][CheckY] == 1) {
+                        System.out.println("Snake is on top of self");
+                        gameOver = true;
+                    } else {
+                        System.out.println("Snake is in board");
+                        SNAKE_MOVING_POSITIONX = CheckX;
+                        SNAKE_MOVING_POSITIONY = CheckY;
+                        grid[SNAKE_MOVING_POSITIONX][SNAKE_MOVING_POSITIONY] = 1; //Snake starting position.
+                    }
                 }
                 else {
                     System.out.println("Snake is out of bounds");
