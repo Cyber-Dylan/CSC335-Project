@@ -12,7 +12,8 @@ public class Instructions extends JFrame implements ActionListener {
         this.setLayout(null);
 
         //Generates the text
-        JLabel label = new JLabel("Guide the snake using the W A S D keys, " + "try not to crash!"); //Text
+        JLabel label = new JLabel("Guide the snake using the W A S D keys, try not to crash! " +
+                "(Mashing the keys will make the snake crash.)"); //Text
         label.setBounds(100, 100, 600, 30); //Text position and size
         this.add(label);
 
