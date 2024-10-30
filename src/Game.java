@@ -68,13 +68,6 @@ Timer timer;
                         break;
                 }
 
-                if (!gameOver) {
-                    repaint();
-                } else {
-                    timer.stop();
-                    new LoseScreen();
-                }
-
                 //Check grid boundary.
                 if (CheckX < 20 && CheckY > -1 && CheckX > -1 && CheckY < 20) {
                     if ((!gameOver) && grid[CheckX][CheckY] == 1) {
@@ -90,6 +83,13 @@ Timer timer;
                 else {
                     System.out.println("Snake is out of bounds");
                     gameOver = true;
+                }
+
+                if (!gameOver) {
+                    repaint();
+                } else {
+                    timer.stop();
+                    new LoseScreen();
                 }
 
                 System.out.println (SNAKE_MOVING_POSITIONX +","+ SNAKE_MOVING_POSITIONY);
